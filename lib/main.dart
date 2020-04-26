@@ -23,7 +23,7 @@ class DicePage extends StatelessWidget {
         Expanded(
           child: FlatButton(
             onPressed: () {
-              print('pritisno si prvu kockicu');
+              print('pritisno si prvu kockicu!');
             },
             child: Image.asset('images/dice2.png'),
           ),
