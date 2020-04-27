@@ -1,4 +1,6 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:audioplayers/audio_cache.dart';
 
 void main() {
   return runApp(
@@ -15,28 +17,62 @@ void main() {
   );
 }
 
-class DicePage extends StatelessWidget {
+class DicePage extends StatefulWidget {
+  @override
+  _DicePageState createState() => _DicePageState();
+}
+
+class _DicePageState extends State<DicePage> {
+  int LKocka = 1;
+  int DKocka = 1;
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: <Widget>[
-        Expanded(
-          child: FlatButton(
-            onPressed: () {
-              print('pritisno si prvu kockicu!');
-            },
-            child: Image.asset('images/dice2.png'),
+    return Center(
+      child: Column(
+        children: <Widget>[
+          SizedBox(height: 100.0),
+          Text(
+            'Dino i Kan?',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.green,
+              fontSize: 50.0,
+            ),
           ),
-        ),
-        Expanded(
-          child: FlatButton(
-            onPressed: () {
-              print('i ovu si prtisko');
-            },
-            child: Image.asset('images/dice1.png'),
+          SizedBox(
+            height: 250.0,
+            width: 100.0,
           ),
-        ),
-      ],
+          Row(
+            children: <Widget>[
+              Expanded(
+                child: FlatButton(
+                  onPressed: () {
+                    setState(() {
+                      LKocka = Random().nextInt(6) + 1;
+                      final player = AudioCache();
+                      player.play('K21.m4a');
+                    });
+                  },
+                  child: Image.asset('images/dice$LKocka.png'),
+                ),
+              ),
+              Expanded(
+                child: FlatButton(
+                  onPressed: () {
+                    setState(() {
+                      DKocka = Random().nextInt(6) + 1;
+                      final player = AudioCache();
+                      player.play('K1$DKocka.m4a');
+                    });
+                  },
+                  child: Image.asset('images/dice$DKocka.png'),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
