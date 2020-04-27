@@ -51,7 +51,7 @@ class _DicePageState extends State<DicePage> {
                     setState(() {
                       LKocka = Random().nextInt(6) + 1;
                       final player = AudioCache();
-                      player.play('K21.m4a');
+                      player.play('K2$LKocka.m4a');
                     });
                   },
                   child: Image.asset('images/dice$LKocka.png'),
